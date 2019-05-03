@@ -2,9 +2,10 @@ import math
 import numpy as np
 import pandas as pd
 
-
+# definisi baca file txt
 tabel = pd.read_csv("dataTugas3ML2019.txt", sep="\t", header=None).values
 
+# fungsu numpy dimasukan kepada array
 qtabel = np.zeros((tabel.shape[0], tabel.shape[1], 4))
 
 for i in range(0, 15):
@@ -12,6 +13,8 @@ for i in range(0, 15):
     qtabel[14, i, 1] = -math.inf
     qtabel[i, 0, 2] = -math.inf
     qtabel[i, 14, 3] = -math.inf
+
+# fungsi menjalankan agent dari start ke goal
 
 
 def walk(action, state):
@@ -37,6 +40,8 @@ def walk(action, state):
 
     return nextState, reward, done
 
+# fungsi aksi yang berjalan
+
 
 def actionstate():
     result = np.argmax(qtabel[state[0]][state[1]])
@@ -50,6 +55,7 @@ y = 1.0
 Maksimum_reward = -math.inf
 goal_state = []
 
+# tabel yang digunakan berukuran 15x15
 for i in range(0, episode):
     state = [14, 0]
 
